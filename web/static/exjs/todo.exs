@@ -1,7 +1,7 @@
 defmodule Todo do
   defp process_event(%KeyboardEvent{"which" => 13} = event) do
     Todo.Data.add(event.target.value)
-    JS.update(event.target, "value", "")
+    JS.update(event.target, object(value: ""))
   end
 
   defp process_event(%KeyboardEvent{} = event) do
