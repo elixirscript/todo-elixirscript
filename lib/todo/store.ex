@@ -5,10 +5,10 @@ defmodule Todo.Store do
   end
 
   def list() do
-    Agent.get(__MODULE__, fn(state) -> 
-      Enum.map(Dict.to_list(state), fn({key, value}) -> 
-        value 
-      end) 
+    Agent.get(__MODULE__, fn(state) ->
+      Enum.map(Dict.to_list(state), fn({key, value}) ->
+        value
+      end)
     end)
   end
 
@@ -38,5 +38,5 @@ defmodule Todo.Store do
       end
     end)
   end
-  
+
 end

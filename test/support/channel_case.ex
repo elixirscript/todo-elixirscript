@@ -4,7 +4,7 @@ defmodule Todo.ChannelCase do
   channel tests.
 
   Such tests rely on `Phoenix.ChannelTest` and also
-  imports other functionality to make it easier
+  import other functionality to make it easier
   to build and query models.
 
   Finally, if the test case interacts with the database,
@@ -20,11 +20,6 @@ defmodule Todo.ChannelCase do
       # Import conveniences for testing with channels
       use Phoenix.ChannelTest
 
-      alias Todo.Repo
-      import Ecto
-      import Ecto.Changeset
-      import Ecto.Query, only: [from: 1, from: 2]
-
 
       # The default endpoint for testing
       @endpoint Todo.Endpoint
@@ -32,9 +27,6 @@ defmodule Todo.ChannelCase do
   end
 
   setup tags do
-    unless tags[:async] do
-      Ecto.Adapters.SQL.restart_test_transaction(Todo.Repo, [])
-    end
 
     :ok
   end

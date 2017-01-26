@@ -2,7 +2,7 @@ defmodule Todo.Data do
     def list() do
     :window.fetch("/api/todo").then(fn(response) ->
       response.json().then(fn(todos) ->
-        View.render(:view, [todos])
+        Main.update(todos)
       end)
     end).catch(fn(err) ->
       :console.debug(err)
