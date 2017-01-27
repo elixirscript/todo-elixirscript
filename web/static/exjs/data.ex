@@ -2,7 +2,9 @@ defmodule Todo.Data do
     def list() do
     :window.fetch("/api/todo").then(fn(response) ->
       response.json().then(fn(todos) ->
-        Main.update(todos)
+        todos
+        |> Enum.map(fn(x) -> %Todo.Models.Todo{ id: x.id, completed: x.completed, title: x.title } end)
+        |> Main.update()
       end)
     end).catch(fn(err) ->
       :console.debug(err)

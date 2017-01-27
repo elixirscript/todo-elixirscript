@@ -2,13 +2,13 @@ defmodule Main do
   require JS
   use ReactUI
 
-  defp process_event(%{"which" => 13} = event) do
-    Todo.Data.add(event.target.value)
-    JS.update(event.target, object(value: ""))
-  end
-
   defp process_event(%{} = event) do
-    :console.debug(event)
+    if event.which == 13 do
+      Todo.Data.add(event.target.value)
+      JS.update(event.target, object(value: ""))
+    else
+      :console.debug(event)
+    end
   end
 
   def initial_state() do
@@ -34,7 +34,7 @@ defmodule Main do
             id: "new-todo",
             placeholder: "What needs to be done?",
             autoFocus: true,
-            onKeyPress: fn(event) -> process_event(event) end
+            onKeyPress: fn(event, _) -> process_event(event) end
           ]
         end
         section id: "main" do
@@ -46,21 +46,21 @@ defmodule Main do
                 {"", ""}
               end
 
-              li data_id: todo.id, className: the_completed do
+              li key: todo.id, className: the_completed do
                 ReactUI.div className: "view" do
                   input [
                     className: "toggle",
                     type: "checkbox",
                     checked: todo.completed,
-                    onChange: fn(event) -> Todo.Data.update(event.target.parentElement.parentElement.data_id, event.target.checked) end
+                    onChange: fn(event) -> Todo.Data.update(todo.id, event.target.checked) end
                   ]
                   label do
                     todo.title
                   end
                   button [
                     className: "destroy",
-                    onClick: fn(event) ->
-                      Todo.Data.remove(event.target.parentElement.parentElement.data_id)
+                    onClick: fn(event, _) ->
+                      Todo.Data.remove(todo.id)
                     end
                   ]
                 end
