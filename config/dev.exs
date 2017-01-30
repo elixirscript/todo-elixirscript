@@ -11,7 +11,7 @@ config :todo, Todo.Endpoint,
   debug_errors: true,
   code_reloader: true,
   check_origin: false,
-  watchers: [npm: ["run", "watch",
+  watchers: [node: ["node_modules/brunch/bin/brunch", "watch", "--stdin",
                     cd: Path.expand("../", __DIR__)], mix: ["elixirscript.watch"]]
 
 

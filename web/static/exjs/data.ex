@@ -26,7 +26,7 @@ defmodule Todo.Data do
   end
 
   def remove(id) do
-    :window.fetch("/api/todo/#{id}", %{ "method" => "delete" }).then(fn(response) ->
+    :window.fetch("/api/todo/" <> id, %{ "method" => "delete" }).then(fn(response) ->
       list()
     end).catch(fn(err) ->
       :console.debug(err)
@@ -34,7 +34,7 @@ defmodule Todo.Data do
   end
 
   def update(id, completed) do
-    :window.fetch("/api/todo/#{id}", %{
+    :window.fetch("/api/todo/" <> id, %{
       "method" => "put",
       "headers" => %{
         "Content-type" => "application/json"

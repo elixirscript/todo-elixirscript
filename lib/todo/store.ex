@@ -14,7 +14,7 @@ defmodule Todo.Store do
 
   def add(title) do
     Agent.update(__MODULE__, fn(state) ->
-      Map.put(state, Set.size(state), %Todo.Models.Todo{ title: title, completed: false, id: Set.size(state) })
+      Map.put(state, length(Map.keys(state)), %Todo.Models.Todo{ title: title, completed: false, id: length(Map.keys(state)) })
     end)
   end
 
