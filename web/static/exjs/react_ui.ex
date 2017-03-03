@@ -3,8 +3,6 @@ defmodule ReactUI do
 
   defmacro __using__(_) do
     quote do
-      JS.import React, "react"
-      JS.import ReactDOM, "react-dom"
       import ReactUI
     end
   end

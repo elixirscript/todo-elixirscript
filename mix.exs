@@ -10,7 +10,14 @@ defmodule Todo.Mixfile do
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
      deps: deps(),
-     elixir_script: [ input: ["web/static/exjs", "lib/shared"], output: "web/static/js/build" ]
+     elixir_script: [
+       input: ["web/static/exjs", "lib/shared"],
+       output: "web/static/js/build",
+       js_modules: [
+         {React, "react"},
+         {ReactDOM, "react-dom"}
+       ]
+     ]
     ]
   end
 
@@ -36,7 +43,7 @@ defmodule Todo.Mixfile do
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
-     {:elixir_script, "~> 0.24.0"},
+     {:elixir_script, "~> 0.26.0"},
      {:fs, "2.12.0", override: true}
     ]
   end

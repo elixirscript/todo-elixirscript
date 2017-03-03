@@ -79,7 +79,7 @@ defmodule Main do
     |> ReactDOM.render(:document.getElementById("app"))
   end
 
-  def main() do
+  def start(_, _) do
     Agent.start(&initial_state/0, [name: :model])
     render()
     Todo.Data.list()
