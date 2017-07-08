@@ -2,8 +2,8 @@
   "repository": {},
   "license": "MIT",
   "scripts": {
-    "deploy": "brunch build --production",
-    "watch": "brunch watch --stdin"
+    "build": "webpack",
+    "build:prod": "webpack -p"
   },
   "dependencies": {
     "phoenix": "file:deps/phoenix",
@@ -12,12 +12,19 @@
     "react-dom": "^15.4.0"
   },
   "devDependencies": {
-    "babel-brunch": "~6.0.0",
-    "brunch": "2.7.4",
-    "clean-css-brunch": "~2.0.0",
-    "css-brunch": "~2.0.0",
-    "javascript-brunch": "~2.0.0",
-    "uglify-js-brunch": "~2.0.1",
-    "babel-preset-env": "1.1.4"
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-preset-babili": "0.0.12",
+    "babel-preset-env": "^1.4.0",
+    "babel-preset-flow": "^6.23.0",
+    "copy-webpack-plugin": "^4.0.1",
+    "css-loader": "^0.28.1",
+    "exports-loader": "^0.6.4",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "imports-loader": "^0.7.1",
+    "script-loader": "^0.7.0",
+    "style-loader": "^0.17.0",
+    "url-loader": "^0.5.8",
+    "webpack": "^2.5.1"
   }
 }

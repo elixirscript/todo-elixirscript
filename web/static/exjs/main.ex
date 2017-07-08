@@ -1,13 +1,12 @@
 defmodule Main do
-  require JS
   use ReactUI
 
   defp process_event(%{} = event) do
     if event.which == 13 do
       Todo.Data.add(event.target.value)
-      JS.update(event.target, object(value: ""))
+      #JS.update(event.target, object(value: ""))
     else
-      :console.debug(event)
+      JS.console.debug(event)
     end
   end
 

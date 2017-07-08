@@ -1,12 +1,19 @@
-
 {
   "presets": [
-    ["env", {
-      "targets": {
-        "chrome": 52
-      },
-      "modules": "commonjs",
-      "loose": true
-    }]
-  ]
+    [
+      "env",
+      {
+        "targets": {
+          "browsers": ["last 2 versions", "safari >= 7"]
+        },
+        "modules": false,
+        "useBuiltIns": true
+      }
+    ]
+  ],
+  "env": {
+    "production": {
+      "presets": ["babili"]
+    }
+  }
 }

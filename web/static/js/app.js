@@ -12,6 +12,7 @@
 // If you no longer want to use a dependency, remember
 // to also remove its path from "config.paths.watched".
 import 'phoenix_html';
+import '../css/app.css';
 
 // Import local files
 //
@@ -20,4 +21,4 @@ import 'phoenix_html';
 // import socket from "./socket"
 import Elixir from './build/Elixir.App';
 
-Elixir.start(Elixir.Main, [])
+Elixir.start(Elixir.Main, []);
