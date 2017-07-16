@@ -4,9 +4,9 @@ defmodule Main do
   defp process_event(%{} = event) do
     if event.which == 13 do
       Todo.Data.add(event.target.value)
-      #JS.update(event.target, object(value: ""))
+      ElixirScript.JS.mutate(event.target, %{"value" => ""})
     else
-      JS.console.debug(event)
+      Data.Http.log(event)
     end
   end
 
@@ -75,7 +75,7 @@ defmodule Main do
   def render() do
     Agent.get(:model, fn(state) -> state end)
     |> view
-    |> ReactDOM.render(:document.getElementById("app"))
+    |> ReactDOM.render(Document.getElementById("app"))
   end
 
   def start(_, _) do

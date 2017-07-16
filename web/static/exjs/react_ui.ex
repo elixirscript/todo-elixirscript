@@ -1,5 +1,4 @@
 defmodule ReactUI do
-  @load_only true
 
   defmacro __using__(_) do
     quote do
@@ -20,7 +19,6 @@ defmodule ReactUI do
     defmacro unquote(tag)(attrs, do: inner) do
       tag = Atom.to_string(unquote(tag))
       { inner, attributes } = do_tag(inner, attrs)
-      IO.inspect inner
 
       quote do
         React.createElement(unquote(tag), unquote(attributes), unquote_splicing(inner))

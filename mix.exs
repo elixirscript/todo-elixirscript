@@ -12,11 +12,7 @@ defmodule Todo.Mixfile do
      deps: deps(),
      elixir_script: [
        input: [Main],
-       output: "web/static/js/build",
-       js_modules: [
-         {React, "react"},
-         {ReactDOM, "react-dom"}
-       ]
+       output: "web/static/js/build"
      ]
     ]
   end
@@ -43,7 +39,7 @@ defmodule Todo.Mixfile do
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
-     {:elixir_script, github: "elixirscript/elixirscript"},
+     {:elixir_script, git: "git@github.com:elixirscript/elixirscript.git"},
      {:fs, "2.12.0", override: true}
     ]
   end

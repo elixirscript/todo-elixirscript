@@ -1,6 +1,6 @@
 %{"cowboy": {:hex, :cowboy, "1.0.4", "a324a8df9f2316c833a470d918aaf73ae894278b8aa6226ce7a9bf699388f878", [:make, :rebar], [{:cowlib, "~> 1.0.0", [hex: :cowlib, repo: "hexpm", optional: false]}, {:ranch, "~> 1.0", [hex: :ranch, repo: "hexpm", optional: false]}], "hexpm"},
   "cowlib": {:hex, :cowlib, "1.0.2", "9d769a1d062c9c3ac753096f868ca121e2730b9a377de23dec0f7e08b1df84ee", [:make], [], "hexpm"},
-  "elixir_script": {:git, "https://github.com/elixirscript/elixirscript.git", "9f4630dbfcd5455a41eb94b6a757245fe6e76507", []},
+  "elixir_script": {:git, "git@github.com:elixirscript/elixirscript.git", "b3277f8c01f20e9c2c00557a55af8b08f10f3857", []},
   "estree": {:hex, :estree, "2.6.0", "86a301b0c355fa55c19e7ef9dceb1b1e983c6df526a2b7846818a38c258fc3fb", [:mix], [], "hexpm"},
   "fs": {:hex, :fs, "2.12.0", "ad631efacc9a5683c8eaa1b274e24fa64a1b8eb30747e9595b93bec7e492e25e", [:rebar3], [], "hexpm"},
   "gettext": {:hex, :gettext, "0.13.0", "daafbddc5cda12738bb93b01d84105fe75b916a302f1c50ab9fb066b95ec9db4", [:mix], [], "hexpm"},
