@@ -1,10 +1,10 @@
 defmodule Main do
   use ReactUI
 
-  defp process_event(%{} = event) do
+  defp process_event(event) do
     if event.which == 13 do
       Todo.Data.add(event.target.value)
-      ElixirScript.JS.mutate(event.target, %{"value" => ""})
+      ElixirScript.JS.mutate(event.target, "value", "")
     else
       Data.Http.log(event)
     end

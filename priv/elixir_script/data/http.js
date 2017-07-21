@@ -2,6 +2,8 @@ export default {
   fetch: function(...args) {
     return fetch(...args);
   },
-  stringify: JSON.stringify,
+  stringify: function(map) {
+    return JSON.stringify(map);
+  },
   log: console.log
 };

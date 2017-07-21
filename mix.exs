@@ -39,7 +39,7 @@ defmodule Todo.Mixfile do
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
-     {:elixir_script, git: "git@github.com:elixirscript/elixirscript.git", ref: "b3277f8c01f20e9c2c00557a55af8b08f10f3857"},
+     {:elixir_script, git: "git@github.com:elixirscript/elixirscript.git", ref: "4d40ad36f9dedb2bd6793aafc2e5553f4a4cbb92"},
      {:fs, "2.12.0", override: true}
     ]
   end

@@ -21,7 +21,7 @@ defmodule ReactUI do
       { inner, attributes } = do_tag(inner, attrs)
 
       quote do
-        React.createElement(unquote(tag), unquote(attributes), unquote_splicing(inner))
+        React.createElement(unquote(tag), unquote(attributes), unquote(inner))
       end
     end
 
@@ -32,7 +32,7 @@ defmodule ReactUI do
       { inner, attributes } = do_tag(inner, attributes)
 
       quote do
-        React.createElement(unquote(tag), unquote(attributes), unquote_splicing(inner))
+        React.createElement(unquote(tag), unquote(attributes), unquote(inner))
       end
     end
   end
