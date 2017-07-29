@@ -40,7 +40,8 @@ defmodule Todo.Mixfile do
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
      {:elixir_script, git: "git@github.com:elixirscript/elixirscript.git", ref: "72b8adea911569667901ed9d38a0a52ddaa8fc0f"},
-     {:fs, "2.12.0", override: true}
+     {:fs, "2.12.0", override: true},
+     {:elixir_script_react, github: "elixirscript/elixirscript_react"}
     ]
   end
 end

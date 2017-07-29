@@ -75,7 +75,7 @@ defmodule Main do
   def render() do
     Agent.get(:model, fn(state) -> state end)
     |> view
-    |> ReactDOM.render(Document.getElementById("app"))
+    |> ReactDOM.render("#app")
   end
 
   def start(_, _) do
