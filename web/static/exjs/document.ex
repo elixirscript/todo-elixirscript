@@ -1,5 +1,5 @@
 defmodule Document do
-  use ElixirScript.FFI
+  use ElixirScript.FFI, global: true, name: :document
 
-  foreign getElementById(id)
+  defexternal getElementById(id)
 end
