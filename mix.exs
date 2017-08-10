@@ -11,7 +11,7 @@ defmodule Todo.Mixfile do
      start_permanent: Mix.env == :prod,
      deps: deps(),
      elixir_script: [
-       input: [Main],
+       input: [Todo.Main],
        output: "assets/js/build"
      ]
     ]

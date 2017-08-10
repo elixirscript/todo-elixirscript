@@ -1,4 +1,4 @@
-defmodule Main do
+defmodule Todo.Main do
   use ReactUI
 
   @moduledoc """
@@ -98,7 +98,7 @@ defmodule Main do
       Todo.Data.add(event.target.value)
       ElixirScript.JS.mutate(event.target, "value", "")
     else
-      Data.Http.log(event)
+      Todo.Data.Http.log(event)
     end
   end
 end

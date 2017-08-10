@@ -21,4 +21,4 @@ import '../css/app.css';
 // import socket from "./socket"
 import Elixir from './build/Elixir.App';
 
-Elixir.start(Elixir.Main, []);
+Elixir.start(Elixir.Todo.Main, []);

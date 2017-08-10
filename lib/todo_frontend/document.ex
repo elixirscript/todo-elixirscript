@@ -1,4 +1,4 @@
-defmodule Document do
+defmodule Todo.Document do
   @moduledoc """
   An FFI module for interacting with the document module
   in JavaScript.

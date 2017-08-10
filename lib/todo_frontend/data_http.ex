@@ -1,4 +1,4 @@
-defmodule Data.Http do
+defmodule Todo.Data.Http do
   @moduledoc """
   An FFI module for fetching data in JavaScript.
   """
