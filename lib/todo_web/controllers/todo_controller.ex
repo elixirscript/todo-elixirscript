@@ -1,5 +1,5 @@
-defmodule Todo.TodoController do
-  use Todo.Web, :controller
+defmodule TodoWeb.TodoController do
+  use TodoWeb, :controller
 
   def index(conn, _params) do
     json conn, Todo.Store.list

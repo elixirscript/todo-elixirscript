@@ -1,4 +1,8 @@
 defmodule Data.Http do
+  @moduledoc """
+  An FFI module for fetching data in JavaScript.
+  """
+
   use ElixirScript.FFI
 
   defexternal fetch(url)

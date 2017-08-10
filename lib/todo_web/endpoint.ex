@@ -1,7 +1,7 @@
-defmodule Todo.Endpoint do
+defmodule TodoWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :todo
 
-  socket "/socket", Todo.UserSocket
+  socket "/socket", TodoWeb.UserSocket
 
   # Serve at "/" the static files from "priv/static" directory.
   #
@@ -38,5 +38,5 @@ defmodule Todo.Endpoint do
     key: "_todo_key",
     signing_salt: "8ZOUykEx"
 
-  plug Todo.Router
+  plug TodoWeb.Router
 end

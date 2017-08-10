@@ -6,17 +6,17 @@ const nodeModulesPath = path.resolve(__dirname, 'node_modules');
 module.exports = {
   devtool: 'source-map',
   entry: {
-    app: './web/static/js/app.js'
+    app: './js/app.js'
   },
   output: {
-    path: path.resolve(__dirname, 'priv', 'static'),
+    path: path.resolve(__dirname, '..', 'priv', 'static'),
     filename: 'js/[name].js'
   },
   plugins: [
     new CopyWebpackPlugin([
       {
-        from: path.resolve(__dirname, 'web', 'static', 'assets'),
-        to: path.resolve(__dirname, 'priv', 'static')
+        from: path.resolve(__dirname, 'static'),
+        to: path.resolve(__dirname, '..', 'priv', 'static')
       }
     ]),
     new ExtractTextPlugin({ filename: 'css/[name].css', allChunks: true })

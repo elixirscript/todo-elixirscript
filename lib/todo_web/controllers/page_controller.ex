@@ -1,5 +1,5 @@
-defmodule Todo.PageController do
-  use Todo.Web, :controller
+defmodule TodoWeb.PageController do
+  use TodoWeb, :controller
 
   def index(conn, _params) do
     render conn, "index.html"

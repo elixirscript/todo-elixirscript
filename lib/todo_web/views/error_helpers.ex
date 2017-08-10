@@ -1,4 +1,4 @@
-defmodule Todo.ErrorHelpers do
+defmodule TodoWeb.ErrorHelpers do
   @moduledoc """
   Conveniences for translating and building error messages.
   """
@@ -32,9 +32,9 @@ defmodule Todo.ErrorHelpers do
     #     dgettext "errors", "is invalid"
     #
     if count = opts[:count] do
-      Gettext.dngettext(Todo.Gettext, "errors", msg, msg, count, opts)
+      Gettext.dngettext(TodoWeb.Gettext, "errors", msg, msg, count, opts)
     else
-      Gettext.dgettext(Todo.Gettext, "errors", msg, opts)
+      Gettext.dgettext(TodoWeb.Gettext, "errors", msg, opts)
     end
   end
 end

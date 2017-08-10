@@ -1,10 +1,16 @@
 defmodule Todo.Data do
-    def list() do
+  @moduledoc """
+  This module interacts with our Todo API.
+  It uses REST calls to send and receive Todos from
+  the server.
+  """
+
+  def list() do
     Data.Http.fetch("/api/todo").then(fn(response) ->
       response.json()
     end).then(fn(todos) ->
         todos
-      |> Enum.map(fn(x) -> %Todo.Models.Todo{ id: x.id, completed: x.completed, title: x.title } end)
+      |> Enum.map(fn(x) -> %Todo.Todo{ id: x.id, completed: x.completed, title: x.title } end)
       |> Main.update()
     end).catch(fn(err) ->
       Data.Http.log(err)

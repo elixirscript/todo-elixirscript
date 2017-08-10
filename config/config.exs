@@ -6,10 +6,10 @@
 use Mix.Config
 
 # Configures the endpoint
-config :todo, Todo.Endpoint,
+config :todo, TodoWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "DSFpJTbLbzxovpyVZ0kynrtvPaeCpZHgWL9Dh7GRDZC6adtg4+7g7D52/uN1zpR+",
-  render_errors: [view: Todo.ErrorView, accepts: ~w(html json)],
+  render_errors: [view: TodoWeb.ErrorView, accepts: ~w(html json)],
   pubsub: [name: Todo.PubSub,
            adapter: Phoenix.PubSub.PG2]
 

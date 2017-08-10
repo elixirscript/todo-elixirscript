@@ -1,25 +1,38 @@
 defmodule Main do
   use ReactUI
 
-  defp process_event(event) do
-    if event.which == 13 do
-      Todo.Data.add(event.target.value)
-      ElixirScript.JS.mutate(event.target, "value", "")
-    else
-      Data.Http.log(event)
-    end
+  @moduledoc """
+  The entry point to the Todo app's ElixirScript frontend
+
+  It starts by adding the initial state into an Agent. This
+  agent will hold the state of our application. Next, it calls
+  the render function. This function is responsible for taking
+  the state, passing it into the view function and then rendering
+  the generated view to the DOM.
+
+  The view function itself builds react components that make up
+  our frontend. The state is passed in and the view function uses
+  that to fill in whatever it needs from it.
+
+  There is also an update function. The update function is triggered
+  by dom events and updates the state inside the Agent. It then triggers
+  a render to update the DOM
+  """
+
+  def start(_, _) do
+    Agent.start(&initial_state/0, [name: :state])
+    render()
+    Todo.Data.list()
   end
 
   def initial_state() do
     []
   end
 
-  def update(todos) do
-    Agent.update(:model, fn(_) ->
-      todos
-    end)
-
-    render()
+  def render() do
+    Agent.get(:state, fn(state) -> state end)
+    |> view
+    |> ReactDOM.render("#app")
   end
 
   def view(todos) do
@@ -72,16 +85,20 @@ defmodule Main do
     end
   end
 
-  def render() do
-    Agent.get(:model, fn(state) -> state end)
-    |> view
-    |> ReactDOM.render("#app")
-  end
+  def update(todos) do
+    Agent.update(:state, fn(_) ->
+      todos
+    end)
 
-  def start(_, _) do
-    Agent.start(&initial_state/0, [name: :model])
     render()
-    Todo.Data.list()
   end
 
+  defp process_event(event) do
+    if event.which == 13 do
+      Todo.Data.add(event.target.value)
+      ElixirScript.JS.mutate(event.target, "value", "")
+    else
+      Data.Http.log(event)
+    end
+  end
 end

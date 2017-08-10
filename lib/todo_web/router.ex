@@ -1,5 +1,5 @@
-defmodule Todo.Router do
-  use Todo.Web, :router
+defmodule TodoWeb.Router do
+  use TodoWeb, :router
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -13,13 +13,13 @@ defmodule Todo.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", Todo do
+  scope "/", TodoWeb do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
   end
 
-  scope "/api", Todo do
+  scope "/api", TodoWeb do
     pipe_through :api
     resources "/todo", TodoController, except: [:new, :edit]
   end

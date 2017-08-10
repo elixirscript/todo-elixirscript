@@ -9,7 +9,7 @@ defmodule Todo do
     # Define workers and child supervisors to be supervised
     children = [
       # Start the endpoint when the application starts
-      supervisor(Todo.Endpoint, []),
+      supervisor(TodoWeb.Endpoint, []),
       worker(Todo.Store, [])
       # Start your own worker by calling: Todo.Worker.start_link(arg1, arg2, arg3)
       # worker(Todo.Worker, [arg1, arg2, arg3]),
@@ -24,7 +24,7 @@ defmodule Todo do
   # Tell Phoenix to update the endpoint configuration
   # whenever the application is updated.
   def config_change(changed, _new, removed) do
-    Todo.Endpoint.config_change(changed, removed)
+    TodoWeb.Endpoint.config_change(changed, removed)
     :ok
   end
 end
