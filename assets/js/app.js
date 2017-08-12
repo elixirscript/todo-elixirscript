@@ -19,6 +19,6 @@ import '../css/app.css';
 // Local files can be imported directly using relative
 // paths "./socket" or full ones "web/static/js/socket".
 // import socket from "./socket"
-import Elixir from './build/Elixir.App';
+import Elixir from './build/elixirscript.build.js';
 
 Elixir.start(Elixir.Todo.Main, []);
