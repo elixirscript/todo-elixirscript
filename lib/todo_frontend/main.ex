@@ -1,5 +1,5 @@
 defmodule Todo.Main do
-  use ReactUI
+  use React.HTML
 
   @moduledoc """
   The entry point to the Todo app's ElixirScript frontend
@@ -36,7 +36,7 @@ defmodule Todo.Main do
   end
 
   def view(todos) do
-    ReactUI.div do
+    React.HTML.div do
       section id: "todoapp" do
         header id: "header" do
           h1 do
@@ -59,7 +59,7 @@ defmodule Todo.Main do
               end
 
               li key: todo.id, className: the_completed do
-                ReactUI.div className: "view" do
+                React.HTML.div className: "view" do
                   input [
                     className: "toggle",
                     type: "checkbox",
