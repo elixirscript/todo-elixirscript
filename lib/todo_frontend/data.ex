@@ -6,50 +6,63 @@ defmodule Todo.Data do
   """
 
   def list() do
-    Todo.Data.Http.fetch("/api/todo").then(fn(response) ->
+    ElixirScript.Web.Window.fetch("/api/todo").then(fn response ->
       response.json()
-    end).then(fn(todos) ->
-        todos
-      |> Enum.map(fn(x) -> %Todo.Todo{ id: x.id, completed: x.completed, title: x.title } end)
+    end).then(fn todos ->
+      todos
+      |> Enum.map(fn x -> %Todo.Todo{id: x.id, completed: x.completed, title: x.title} end)
       |> Todo.Main.update()
-    end).catch(fn(err) ->
-      Todo.Data.Http.log(err)
+    end).catch(fn err ->
+      ElixirScript.Web.Console.log(err)
     end)
   end
 
   def add(the_title) do
-    Todo.Data.Http.fetch("/api/todo", ElixirScript.JS.map_to_object(%{
-      "method" => "post",
-      "headers" => %{
-        "Content-type" => "application/json"
-      },
-      "body" => Todo.Data.Http.stringify(ElixirScript.JS.map_to_object(%{"title" => the_title}))
-    })).then(fn(response) ->
+    ElixirScript.Web.Window.fetch(
+      "/api/todo",
+      ElixirScript.JS.map_to_object(%{
+        "method" => "post",
+        "headers" => %{
+          "Content-type" => "application/json"
+        },
+        "body" =>
+          ElixirScript.Web.JSON.stringify(ElixirScript.JS.map_to_object(%{"title" => the_title}))
+      })
+    ).then(fn response ->
       list()
-    end).catch(fn(err) ->
-      Todo.Data.Http.log(err)
+    end).catch(fn err ->
+      ElixirScript.Web.Console.log(err)
     end)
   end
 
   def remove(id) do
-    Todo.Data.Http.fetch("/api/todo/" <> id, ElixirScript.JS.map_to_object(%{ "method" => "delete" })).then(fn(response) ->
+    ElixirScript.Web.Window.fetch(
+      "/api/todo/" <> id,
+      ElixirScript.JS.map_to_object(%{"method" => "delete"})
+    ).then(fn response ->
       list()
-    end).catch(fn(err) ->
-      Todo.Data.Http.log(err)
+    end).catch(fn err ->
+      ElixirScript.Web.Console.log(err)
     end)
   end
 
   def update(id, completed) do
-    Todo.Data.Http.fetch("/api/todo/" <> id, ElixirScript.JS.map_to_object(%{
-      "method" => "put",
-      "headers" => %{
-        "Content-type" => "application/json"
-      },
-      "body" => Todo.Data.Http.stringify(ElixirScript.JS.map_to_object(%{ "completed" => completed }))
-    })).then(fn(response) ->
+    ElixirScript.Web.Window.fetch(
+      "/api/todo/" <> id,
+      ElixirScript.JS.map_to_object(%{
+        "method" => "put",
+        "headers" => %{
+          "Content-type" => "application/json"
+        },
+        "body" =>
+          ElixirScript.Web.JSON.stringify(
+            ElixirScript.JS.map_to_object(%{"completed" => completed})
+          )
+      })
+    ).then(fn response ->
       list()
-    end).catch(fn(err) ->
-      Todo.Data.Http.log(err)
+    end).catch(fn err ->
+      ElixirScript.Web.Console.log(err)
     end)
   end
 end

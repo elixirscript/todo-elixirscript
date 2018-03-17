@@ -4,7 +4,7 @@
       "env",
       {
         "targets": {
-          "browsers": ["last 2 versions", "safari >= 7"]
+          "chrome": 52
         },
         "modules": false,
         "useBuiltIns": true

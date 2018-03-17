@@ -20,7 +20,7 @@ defmodule Todo.Main do
   """
 
   def start(_, _) do
-    Agent.start(&initial_state/0, [name: :state])
+    Agent.start(&initial_state/0, name: :state)
     render()
     Todo.Data.list()
   end
@@ -30,7 +30,7 @@ defmodule Todo.Main do
   end
 
   def render() do
-    Agent.get(:state, fn(state) -> state end)
+    Agent.get(:state, fn state -> state end)
     |> view
     |> ReactDOM.render("#app")
   end
@@ -42,51 +42,57 @@ defmodule Todo.Main do
           h1 do
             "todos"
           end
-          input [
+
+          input(
             id: "new-todo",
             placeholder: "What needs to be done?",
             autoFocus: true,
-            onKeyPress: fn(event, _) -> process_event(event) end
-          ]
+            onKeyPress: fn event -> process_event(event) end
+          )
         end
+
         section id: "main" do
           ul id: "todo-list" do
-            Enum.map(todos, fn(todo) ->
-              {the_completed, checked} = if todo.completed do
-                {"completed", "checked"}
-              else
-                {"", ""}
-              end
+            Enum.map(todos, fn todo ->
+              {the_completed, checked} =
+                if todo.completed do
+                  {"completed", "checked"}
+                else
+                  {"", ""}
+                end
 
               li key: todo.id, className: the_completed do
                 React.HTML.div className: "view" do
-                  input [
+                  input(
                     className: "toggle",
                     type: "checkbox",
                     checked: todo.completed,
-                    onChange: fn(event) -> Todo.Data.update(todo.id, event.target.checked) end
-                  ]
+                    onChange: fn event -> Todo.Data.update(todo.id, event.target.checked) end
+                  )
+
                   label do
                     todo.title
                   end
-                  button [
+
+                  button(
                     className: "destroy",
-                    onClick: fn(event, _) ->
+                    onClick: fn event ->
                       Todo.Data.remove(todo.id)
                     end
-                  ]
+                  )
                 end
               end
             end)
           end
         end
-        footer id: "footer"
+
+        footer(id: "footer")
       end
     end
   end
 
   def update(todos) do
-    Agent.update(:state, fn(_) ->
+    Agent.update(:state, fn _ ->
       todos
     end)
 
@@ -98,7 +104,7 @@ defmodule Todo.Main do
       Todo.Data.add(event.target.value)
       ElixirScript.JS.mutate(event.target, "value", "")
     else
-      Todo.Data.Http.log(event)
+      ElixirScript.Web.Console.log(event)
     end
   end
 end
